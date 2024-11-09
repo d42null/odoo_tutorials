@@ -27,4 +27,8 @@ class EstateProperty(models.Model):
         default='new', required=True, copy=False)
    
     garden_orientation=fields.Selection(selection=[('north', 'North'), ('south', 'South'), ('east', 'East'), ('west', 'West')])
-    
+    property_type_id=fields.Many2one('estate.property.type','Type')
+    buyer =fields.Many2one('res.partner',copy=False)
+    salesperson=fields.Many2one('res.partner',default=lambda self:self.env.user.partner_id)
+    tag_ids=fields.Many2many('estate.property.tag',string='Tags')
+    offer_ids=fields.One2many('estate.property.offer','property_id',string="Offers")

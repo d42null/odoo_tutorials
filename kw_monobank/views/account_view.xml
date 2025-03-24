@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="kw_bank_import_monobank_account_journal_form" model="ir.ui.view">
+        <field name="name">account.journal.form (kw_bank_import_monobank)</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.view_account_journal_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//sheet" position="before">
+                <header>
+                    <button class="oe_highlight" invisible="bank_statements_source != 'monobank'" name="kw_monobank_init_sync" string="Init sync" type="object"/>
+                    <button class="oe_highlight" invisible="bank_statements_source != 'monobank'" name="kw_monobank_self_sync" string="Manual sync" type="object"/>
+                    <button class="oe_highlight" invisible="bank_statements_source != 'monobank'" name="get_monobank_account_info" string="Get Monobank Account Info" type="object"/>
+                </header>
+            </xpath>
+            <xpath expr="//group/field[@name='bank_account_id']" position="after">
+                <!--            <field name="bank_statements_source" position="after">-->
+                <field invisible="bank_statements_source != 'monobank'" name="kw_monobank_token"/>
+                <field invisible="bank_statements_source != 'monobank'" name="monobank_personal_account_id"/>
+                <field invisible="bank_statements_source != 'monobank'" name="kw_monobank_downloading_date"/>
+                <!--</field>-->
+            </xpath></field>
+    </record>
+</odoo>

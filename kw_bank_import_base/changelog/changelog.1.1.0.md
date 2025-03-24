@@ -1,0 +1,1 @@
+- Change creating line['narration'] algorithm

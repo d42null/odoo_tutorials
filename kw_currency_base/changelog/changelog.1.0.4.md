@@ -1,1 +1,0 @@
-Delete boring terminal print
